@@ -1,0 +1,20 @@
+services:
+  px4-dev:
+    image: px4-ros2-rust:final
+    container_name: px4-dev
+
+    # X11 forwarding for VcXsrv
+    environment:
+      - DISPLAY=${DISPLAY}     
+      - QT_X11_NO_MITSHM=1
+
+    volumes:
+      # X11 socket
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+
+      # Your source directory
+      - ./src:/workspace/src:rw
+
+    network_mode: "host"
+    stdin_open: true
+    tty: true
