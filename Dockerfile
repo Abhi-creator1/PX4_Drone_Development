@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
     gnupg lsb-release \
     libasio-dev libtinyxml2-dev \
     libfoonathan-memory-dev \
-    libfastcdr-dev libfastrtps-dev \
+    libfastcdr-dev libfastrtps-dev \ 
+    apt install -y libclang-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # PX4 setup
@@ -41,14 +42,13 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --de
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 
-# ROS2 workspace with PX4 messages
-WORKDIR /workspace
-RUN mkdir -p ros2_ws/src
-WORKDIR /workspace/ros2_ws/src
-RUN git clone https://github.com/PX4/px4_msgs.git -b release/1.15
-RUN git clone https://github.com/PX4/px4_ros_com.git
-WORKDIR /workspace/ros2_ws
-RUN bash -c "source /opt/ros/humble/setup.bash && colcon build"
+# Install cargo plugins for ROS2
+RUN cargo install --debug cargo-ament-build
+RUN pip3 install git+https://github.com/colcon/colcon-cargo.git
+RUN pip3 install git+https://github.com/colcon/colcon-ros-cargo.git
+
+# Copy your Rust project
+COPY rust_workspace /workspace/rust_workspace
 
 # Scripts
 WORKDIR /workspace

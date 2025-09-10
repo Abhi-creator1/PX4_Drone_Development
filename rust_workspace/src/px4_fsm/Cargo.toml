@@ -1,0 +1,13 @@
+[package]
+name = "px4_fsm"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0"
+rclrs = "*"
+px4_msgs = "*"
+
+[[bin]]
+name = "px4_fsm"
+path = "src/main.rs"

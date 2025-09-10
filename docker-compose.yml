@@ -7,6 +7,7 @@ services:
     environment:
       - DISPLAY=${DISPLAY}     
       - QT_X11_NO_MITSHM=1
+      - ROS_DOMAIN_ID=0
 
     volumes:
       # X11 socket
