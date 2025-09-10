@@ -28,9 +28,9 @@ cd PX4_Drone_Development
 Build the Docker image using the provided Dockerfile:
 
 
-Or pull prebuilt image (recommended as lots of dependencies were only added in image):
+####Or pull prebuilt image (recommended as lots of dependencies were only added in image):
 
-docker pull agentabhi/px4-ros2-rust:latest
+####docker pull agentabhi/px4-ros2-rust:latest
 
 
 ### Setup Micro XRCE-DDS Agent (not needed if using prebuild image)
