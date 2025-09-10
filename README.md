@@ -9,7 +9,7 @@ This repository contains a Rust-based PX4 autonomous flight control system integ
 - Autonomous mission planning with a square waypoint pattern
 - Fully autonomous control: all arming and mode changes done within the node
 - State machine implementation for mission phases: takeoff, hold, waypoint flight, RTL, land, disarm
-- Basic failsafe for pose validity and system flags that triggers safe landing
+- Basic failsafe for pose validity and system flags that triggers safe landing (unstable)
 - Telemetry logging to console and CSV for post-flight analysis
 - ROS 2 node designed to run inside Docker for environment consistency
 
